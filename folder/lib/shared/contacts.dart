@@ -35,63 +35,63 @@ class Contacts extends StatelessWidget {
                 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_0.jpg",
-                  fullName: "Rebecca Lucas",
+                  imageUrl: "assets/images/awhad.jpg",
+                  fullName: "Pranav Awhad",
                 ),
 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_1.jpg",
-                  fullName: "Jose Young",
+                  imageUrl: "assets/images/chary.jpg",
+                  fullName: "Abhishek Chary",
                 ),
 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_2.jpg",
-                  fullName: "Janice Brewer",
+                  imageUrl: "assets/images/dubey.jpg",
+                  fullName: "Aryan Dubey",
                 ),
 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_3.jpg",
-                  fullName: "Phoebe Buffay",
+                  imageUrl: "assets/images/mehta.jpg",
+                  fullName: "Aaryan Mehta",
                 ),
 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_4.jpg",
-                  fullName: "Monica Geller",
+                  imageUrl: "assets/images/padawe.jpg",
+                  fullName: "Pranav Padawe",
                 ),
 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_5.jpg",
-                  fullName: "Rachel Green",
+                  imageUrl: "assets/images/tejas.jpg",
+                  fullName: "Tejas Hasabnis",
                 ),
 
                 ContactItem(
                   navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_6.jpg",
-                  fullName: "Kamila Fros",
+                  imageUrl: "assets/images/venky.jpg",
+                  fullName: "Venkatesh Rallapali",
                 ),
 
-                ContactItem(
-                  navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_7.jpg",
-                  fullName: "Ross Geller",
-                ),
+                // ContactItem(
+                //   navigateTo: navigateTo,
+                //   imageUrl: "assets/images/user_7.jpg",
+                //   fullName: "Ross Geller",
+                // ),
 
-                ContactItem(
-                  navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_8.jpg",
-                  fullName: "Chandler Bing",
-                ),
+                // ContactItem(
+                //   navigateTo: navigateTo,
+                //   imageUrl: "assets/images/user_8.jpg",
+                //   fullName: "Chandler Bing",
+                // ),
 
-                ContactItem(
-                  navigateTo: navigateTo,
-                  imageUrl: "assets/images/user_9.jpg",
-                  fullName: "Yoyi Delirio",
-                ),
+                // ContactItem(
+                //   navigateTo: navigateTo,
+                //   imageUrl: "assets/images/user_9.jpg",
+                //   fullName: "Yoyi Delirio",
+                // ),
 
               ],
             ),

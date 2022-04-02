@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "281724202829",
-    "project_id": "mad-fc9b2",
-    "storage_bucket": "mad-fc9b2.appspot.com"
+    "project_number": "694372241770",
+    "project_id": "fir-c27c8",
+    "storage_bucket": "fir-c27c8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:281724202829:android:ee67e68f2b1c896d159104",
+        "mobilesdk_app_id": "1:694372241770:android:4b4d2ab93631bde2fbd513",
         "android_client_info": {
           "package_name": "com.example.paypal"
         }
       },
       "oauth_client": [
         {
-          "client_id": "281724202829-osfd9n69q90j6rl32tb9045o2hufijda.apps.googleusercontent.com",
+          "client_id": "694372241770-qeddf1elr33kg6f6uv3qgke0sissb423.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAbP-nRGTJDJeZnDGOJFTVmsmSqo4Dc-RA"
+          "current_key": "AIzaSyBSI49yXXTGbJHtHBkMXNmrYCopkcwBpzw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "281724202829-osfd9n69q90j6rl32tb9045o2hufijda.apps.googleusercontent.com",
+              "client_id": "694372241770-qeddf1elr33kg6f6uv3qgke0sissb423.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

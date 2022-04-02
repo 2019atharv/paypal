@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: AssetImage("assets/images/user_0.jpg"), 
+                      image: AssetImage("assets/images/atharv.jpg"), 
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -41,7 +41,7 @@ class Settings extends StatelessWidget {
 
               Center(
                 child: Text(
-                  "Rebecca Lucas",
+                  "Atharv Uday Parab",
                   style: TextStyle(
                     color: kPrimaryColor,
                     fontSize: 16,
@@ -88,6 +88,24 @@ class Settings extends StatelessWidget {
                 title: "Technical Support", 
                 iconData: Icons.headset,
               ),
+
+              SizedBox(
+                height: 15,
+              ),
+              
+              TextButton.icon( 
+                icon: Icon(Icons.logout_rounded),
+                label: Text('Logout',style: TextStyle(
+                  color: Colors.white,
+                  fontSize:20,
+                  fontWeight: FontWeight.bold,
+                )),
+                style: TextButton.styleFrom(
+                primary: kPrimaryColor,
+                backgroundColor: kSecondaryColor,
+                
+                ),
+                 )
 
             ],
           ),

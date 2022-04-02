@@ -4,6 +4,10 @@ import 'package:paypal/screens/master.dart';
 import 'package:paypal/utils/constants.dart';
 import 'package:paypal/shared/custom_field.dart';
 import 'package:paypal/shared/rounded_button.dart';
+import 'package:email_validator/email_validator.dart';
+
+
+
 
 class Signup extends StatefulWidget {
   @override
@@ -13,6 +17,15 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final _formkey = GlobalKey<FormState>();
   @override
+  var _fullname;
+  var _signupEmail;
+  var _mobileNumber;
+  var _signupPassword;
+  var _confirmPassword;
+
+  final _emailController = TextEditingController();
+  bool _isValid = false;
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -26,7 +39,6 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    
                     Text(
                       "Sign Up",
                       style: TextStyle(
@@ -41,157 +53,197 @@ class _SignupState extends State<Signup> {
                     ),
 
                     Form(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       key: _formkey,
-                    
-                      child: Column(
-                        children: <Widget>[TextFormField(
-                          decoration:InputDecoration(labelText: "Full Name",icon: Icon(Icons.person,color: kPrimaryColor),
-                          enabledBorder: UnderlineInputBorder(      
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),  
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                         ),
-                         
-                          
-                        
-                        ),
-                        
-                        SizedBox(
-                      height: 15,
-                        ),
-
+                      child: Column(children: <Widget>[
                         TextFormField(
-                          decoration:InputDecoration(labelText: "Email",icon: Icon(Icons.email,color: kPrimaryColor),
-                          enabledBorder: UnderlineInputBorder(      
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),  
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                         ),
-                         
-                          
-                        
-                        ),
-
-                        SizedBox(
-                      height: 15,
-                        ),
-
-                        TextFormField(
-                          decoration:InputDecoration(labelText: "Mobile No.",icon: Icon(Icons.phone,
-                          color: kPrimaryColor),
-                          enabledBorder: UnderlineInputBorder(      
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),  
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                         ),
-                        ),
-
-                        SizedBox(
-                      height: 15,
-                        ),
-
-                        TextFormField(
-                          decoration:InputDecoration(labelText: "Password",icon: Icon(Icons.lock,color: kPrimaryColor),
-                          enabledBorder: UnderlineInputBorder(      
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),  
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                         ),
-                         
-                          
-                        
-                        ),
-                      SizedBox(
-                      height: 15,
-                      ),
-
-                        TextFormField(
-                          decoration:InputDecoration(labelText: "Confirm Password",icon: Icon(Icons.lock,color: kPrimaryColor),
-                          enabledBorder: UnderlineInputBorder(      
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),  
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: kPrimaryColor,
-                                    width: 2,  
-                                  ),
-                                ),
-                         ),
-                         
-                          
-                        
+                          decoration: InputDecoration(
+                            labelText: "Full Name",
+                            icon: Icon(Icons.person, color: kPrimaryColor),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                          onSaved: (value) {
+                            _fullname = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Enter Full Name';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(
-                      height: 15,
+                          height: 15,
                         ),
-
-                        ] 
-                      ),
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            labelText: "Email",
+                            icon: Icon(Icons.email, color: kPrimaryColor),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                          onSaved: (value) {
+                            _signupEmail = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Enter Email';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          maxLength: 10,
+                          decoration: InputDecoration(
+                            labelText: "Mobile No.",
+                            icon: Icon(Icons.phone, color: kPrimaryColor),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                          onSaved: (value) {
+                            _mobileNumber = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Enter Mobile Number';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                            icon: Icon(Icons.lock, color: kPrimaryColor),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                          onSaved: (value) {
+                            _signupPassword = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Enter Password';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: "Confirm Password",
+                            icon: Icon(Icons.lock, color: kPrimaryColor),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                          onSaved: (value) {
+                            _confirmPassword = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Confirm Password!';
+                            }
+                            if (_signupPassword != _confirmPassword) {
+                              return "Password doesn't match";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                      ]),
                     ),
 
                     // CustomField(
@@ -221,10 +273,18 @@ class _SignupState extends State<Signup> {
                     RoundedButton(
                       text: "Sign Up",
                       onPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Master()),
-                        );
+                        
+                        _isValid = EmailValidator.validate(_emailController.text);
+                        if (_isValid){
+                            if (_formkey.currentState.validate()) {
+                          _formkey.currentState.save();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Login()),
+                          );
+                        }
+                        } 
+                        
                       },
                     ),
 
@@ -249,7 +309,6 @@ class _SignupState extends State<Signup> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-
                         Text(
                           "Already have an account?",
                           textAlign: TextAlign.center,
@@ -258,11 +317,9 @@ class _SignupState extends State<Signup> {
                             fontSize: 14,
                           ),
                         ),
-
                         SizedBox(
                           width: 8,
                         ),
-
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -280,10 +337,8 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                         ),
-
                       ],
                     ),
-
                   ],
                 ),
               ),

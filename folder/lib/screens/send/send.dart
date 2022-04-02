@@ -3,7 +3,7 @@ import 'package:paypal/shared/widgets.dart';
 import 'package:paypal/shared/custom_field.dart';
 import 'package:paypal/shared/recent.dart';
 import 'package:paypal/shared/contacts.dart';
-import 'package:paypal/screens/send/send_to.dart';
+//import 'package:paypal/screens/send/send_to.dart';
 
 class Send extends StatelessWidget {
   @override
@@ -22,12 +22,12 @@ class Send extends StatelessWidget {
             ),
 
             Recent(
-              navigateTo: SendTo(),
+              //navigateTo: SendTo(),
             ),
 
             Expanded(
               child: Contacts(
-                navigateTo: SendTo(),
+                //navigateTo: SendTo(),
               ),
             ),
 

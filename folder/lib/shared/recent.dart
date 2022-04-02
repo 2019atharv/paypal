@@ -33,11 +33,11 @@ class Recent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
 
-              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/user_0.jpg",),
-              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/user_1.jpg",),
-              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/user_2.jpg",),
-              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/user_3.jpg",),
-              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/user_4.jpg",),
+              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/awhad.jpg",),
+              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/chary.jpg",),
+              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/dubey.jpg",),
+              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/mehta.jpg",),
+              RecentItem(navigateTo: navigateTo, imageUrl: "assets/images/tejas.jpg",),
 
             ],
           ),

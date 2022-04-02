@@ -53,14 +53,20 @@ class BalanceSummary extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-
-                    Text(
-                      "Available Balance",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        Icon( Icons.account_balance_wallet_outlined, color: Colors.white,),
+                        Text(
+                         
+                          "Available Balance",
+                          style: TextStyle(
+                            
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
 
                     SizedBox(

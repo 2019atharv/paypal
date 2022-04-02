@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:paypal/utils/constants.dart';
 import 'package:paypal/screens/dashboard/transactions.dart';
 import 'package:paypal/screens/dashboard/transaction_item.dart';
+import 'package:intl/intl.dart';
+
 
 class TransactionsSummary extends StatelessWidget {
   @override
+
+  String cdate = DateFormat("MMMM, dd, yyyy").format(DateTime.now());
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 32),
@@ -46,7 +50,7 @@ class TransactionsSummary extends StatelessWidget {
           ),
 
           Text(
-            "03/06/2020",
+            cdate,
             style: TextStyle(
               color: kGreyColor,
               fontSize: 14,
@@ -65,73 +69,38 @@ class TransactionsSummary extends StatelessWidget {
                 children: [
                   
                   TransactionItem(
-                    imageUrl: "assets/images/user_0.jpg",
-                    fullName: "Rebecca Lucas",
+                    imageUrl: "assets/images/awhad.jpg",
+                    fullName: "Pranav Awhad",
                     status: "received",
                     amount: "57.01",
                   ),
 
                   TransactionItem(
-                    imageUrl: "assets/images/user_1.jpg",
-                    fullName: "Jose Young",
-                    status: "sended",
+                    imageUrl: "assets/images/chary.jpg",
+                    fullName: "Abhishek Chary",
+                    status: "sent",
                     amount: "19.63",
                   ),
 
                   TransactionItem(
-                    imageUrl: "assets/images/user_2.jpg",
-                    fullName: "Janice Brewer",
+                    imageUrl: "assets/images/dubey.jpg",
+                    fullName: "Aryan Dubey",
                     status: "received",
                     amount: "114.00",
                   ),
 
                   TransactionItem(
-                    imageUrl: "assets/images/user_3.jpg",
-                    fullName: "Phoebe Buffay",
+                    imageUrl: "assets/images/mehta.jpg",
+                    fullName: "Aaryan Mehta",
                     status: "received",
                     amount: "70.16",
                   ),
 
                   TransactionItem(
-                    imageUrl: "assets/images/user_4.jpg",
-                    fullName: "Monica Geller",
-                    status: "received",
+                    imageUrl: "assets/images/padawe.jpg",
+                    fullName: "Pranav Padawe",
+                    status: "sent",
                     amount: "44.50",
-                  ),
-
-                  TransactionItem(
-                    imageUrl: "assets/images/user_5.jpg",
-                    fullName: "Rachel Green",
-                    status: "sended",
-                    amount: "85.50",
-                  ),
-
-                  TransactionItem(
-                    imageUrl: "assets/images/user_6.jpg",
-                    fullName: "Kamila Fros",
-                    status: "received",
-                    amount: "155.00",
-                  ),
-
-                  TransactionItem(
-                    imageUrl: "assets/images/user_7.jpg",
-                    fullName: "Ross Geller",
-                    status: "received",
-                    amount: "23.50",
-                  ),
-
-                  TransactionItem(
-                    imageUrl: "assets/images/user_8.jpg",
-                    fullName: "Chandler Bing",
-                    status: "received",
-                    amount: "11.50",
-                  ),
-
-                  TransactionItem(
-                    imageUrl: "assets/images/user_9.jpg",
-                    fullName: "Yoyi Delirio",
-                    status: "received",
-                    amount: "36.00",
                   ),
 
                 ],
