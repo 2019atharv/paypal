@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:paypal/screens/master.dart';
 import 'package:paypal/screens/signup.dart';
+import 'package:paypal/services/auth.dart';
 import 'package:paypal/utils/constants.dart';
 import 'package:paypal/shared/custom_field.dart';
 import 'package:paypal/shared/rounded_button.dart';
@@ -14,7 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   //final _auth = FirebaseAuth.instance;
-
+  final AuthService _auth = AuthService();
   var _loginEmail;
   var _loginPasssword;
 
@@ -126,9 +127,14 @@ class _LoginState extends State<Login> {
                         ),
                         RoundedButton(
                           text: "Log In",
-                          onPress: () {
+                          onPress: () async {
                             if (_formKey.currentState.validate()) {
-                              _formKey.currentState.save();
+                              dynamic result = await _auth.signinAnon();
+                              if (result == null) {
+                                print("error");
+                              }
+                              else{
+                                _formKey.currentState.save();
 
                               // Navigation
                               Navigator.push(
@@ -136,6 +142,8 @@ class _LoginState extends State<Login> {
                                 MaterialPageRoute(
                                     builder: (context) => Master()),
                               );
+                              }
+                              
                             }
                           },
                         ),
