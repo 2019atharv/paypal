@@ -5,7 +5,7 @@ import 'package:paypal/utils/constants.dart';
 import 'package:paypal/shared/custom_field.dart';
 import 'package:paypal/shared/rounded_button.dart';
 import 'package:email_validator/email_validator.dart';
-
+import 'package:paypal/services/auth.dart';
 
 
 
@@ -16,13 +16,15 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formkey = GlobalKey<FormState>();
-  @override
+  final AuthService _auth = AuthService();
   var _fullname;
   var _signupEmail;
   var _mobileNumber;
   var _signupPassword;
   var _confirmPassword;
-
+  String error='';
+  
+  @override
   final _emailController = TextEditingController();
   bool _isValid = false;
 
@@ -79,8 +81,9 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _fullname = value;
+                          onChanged: (value) {
+                            setState(() => _fullname = value);
+                            //_fullname = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
@@ -117,8 +120,9 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _signupEmail = value;
+                          onChanged: (value) {
+                            setState(() => _signupEmail = value);
+                            //_signupEmail = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
@@ -155,8 +159,9 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _mobileNumber = value;
+                          onChanged: (value) {
+                            setState(() => _mobileNumber = value);
+                            //_mobileNumber = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
@@ -169,6 +174,7 @@ class _SignupState extends State<Signup> {
                           height: 15,
                         ),
                         TextFormField(
+                          obscureText: true,
                           decoration: InputDecoration(
                             labelText: "Password",
                             icon: Icon(Icons.lock, color: kPrimaryColor),
@@ -191,12 +197,15 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _signupPassword = value;
+                          onChanged: (value) {
+                            setState(() => _signupPassword = value);
+                            //_signupPassword = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Enter Password';
+                            }else if (value.length < 6){
+                              return 'Password is too short';
                             }
                             return null;
                           },
@@ -205,6 +214,7 @@ class _SignupState extends State<Signup> {
                           height: 15,
                         ),
                         TextFormField(
+                          obscureText: true,
                           decoration: InputDecoration(
                             labelText: "Confirm Password",
                             icon: Icon(Icons.lock, color: kPrimaryColor),
@@ -227,8 +237,9 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _confirmPassword = value;
+                          onChanged: (value) {
+                            setState(() => _confirmPassword = value);
+                            //_confirmPassword = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
@@ -272,12 +283,17 @@ class _SignupState extends State<Signup> {
 
                     RoundedButton(
                       text: "Sign Up",
-                      onPress: () {
+                      onPress: () async{
                         
                         _isValid = EmailValidator.validate(_emailController.text);
                         if (_isValid){
                             if (_formkey.currentState.validate()) {
                           _formkey.currentState.save();
+                          dynamic result = await _auth.registerEmail(_signupEmail, _signupPassword);
+                          if (result == null){
+                            setState(() => error = 'Please check your details again');
+
+                          }
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => Login()),
@@ -291,7 +307,18 @@ class _SignupState extends State<Signup> {
                     SizedBox(
                       height: 16,
                     ),
-
+                    Text(
+                      error,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
                     Text(
                       "By signing up, you agreed with our term of Services and Privacy Policy.",
                       textAlign: TextAlign.center,

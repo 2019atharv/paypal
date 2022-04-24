@@ -18,7 +18,7 @@ class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   var _loginEmail;
   var _loginPasssword;
-
+  String error = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,8 +75,9 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _loginEmail = value;
+                          onChanged: (value) {
+                            setState(() => _loginEmail = value);
+                            //_loginEmail = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
@@ -112,8 +113,9 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
-                          onSaved: (value) {
-                            _loginPasssword = value;
+                          onChanged: (value) {
+                            setState(() => _loginPasssword = value);
+                            //_loginPasssword = value;
                           },
                           validator: (value) {
                             if (value.isEmpty) {
@@ -128,26 +130,39 @@ class _LoginState extends State<Login> {
                         RoundedButton(
                           text: "Log In",
                           onPress: () async {
+                            print(_loginEmail);
+                            print(_loginPasssword);
                             if (_formKey.currentState.validate()) {
-                              dynamic result = await _auth.signinAnon();
+                              dynamic result = await _auth.signinEmail(_loginEmail,_loginPasssword);
                               if (result == null) {
-                                print("error");
-                              }
-                              else{
+                                setState(() =>
+                                    error = 'Invalid Credentials');
+                              } else {
                                 _formKey.currentState.save();
 
-                              // Navigation
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Master()),
-                              );
+                                // Navigation
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Master()),
+                                );
                               }
-                              
                             }
                           },
                         ),
                       ]),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      error,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       height: 16,
