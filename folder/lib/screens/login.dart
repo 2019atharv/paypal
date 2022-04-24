@@ -130,8 +130,8 @@ class _LoginState extends State<Login> {
                         RoundedButton(
                           text: "Log In",
                           onPress: () async {
-                            print(_loginEmail);
-                            print(_loginPasssword);
+                            // print(_loginEmail);
+                            // print(_loginPasssword);
                             if (_formKey.currentState.validate()) {
                               dynamic result = await _auth.signinEmail(_loginEmail,_loginPasssword);
                               if (result == null) {
