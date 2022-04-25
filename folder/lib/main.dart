@@ -8,8 +8,10 @@ import 'package:paypal/services/auth.dart';
 import 'package:paypal/models/CustomUser.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  //initializing the app in firebase
+  // DefaultFirebaseOptions.currentPlatform is auto-generated file
   runApp(MyApp());
 }
 
