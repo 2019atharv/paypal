@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<CustomUser>.value(
+      
       value: AuthService().user,
       child: MaterialApp(
         title: 'Paypal MAD Project',

@@ -3,6 +3,7 @@ import 'package:paypal/utils/constants.dart';
 import 'package:paypal/shared/widgets.dart';
 import 'package:paypal/screens/settings/setting_item.dart';
 import 'package:paypal/services/auth.dart';
+import 'package:paypal/screens/login.dart';
 
 class Settings extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -94,6 +95,13 @@ class Settings extends StatelessWidget {
                   ),
                   onPressed: () async {
                     await _auth.signOut();
+            
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Login()),
+                    );
+                    
+                    //return Login();
                   },
                 )
               ],
