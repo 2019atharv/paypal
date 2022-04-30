@@ -134,45 +134,45 @@ class _SignupState extends State<Signup> {
                         SizedBox(
                           height: 15,
                         ),
-                        TextFormField(
-                          keyboardType: TextInputType.number,
-                          maxLength: 10,
-                          decoration: InputDecoration(
-                            labelText: "Mobile No.",
-                            icon: Icon(Icons.phone, color: kPrimaryColor),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: kPrimaryColor,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: kPrimaryColor,
-                                width: 2,
-                              ),
-                            ),
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: kPrimaryColor,
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                          onChanged: (value) {
-                            setState(() => _mobileNumber = value);
-                            //_mobileNumber = value;
-                          },
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Enter Mobile Number';
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
+                        // TextFormField(
+                        //   keyboardType: TextInputType.number,
+                        //   maxLength: 10,
+                        //   decoration: InputDecoration(
+                        //     labelText: "Mobile No.",
+                        //     icon: Icon(Icons.phone, color: kPrimaryColor),
+                        //     enabledBorder: UnderlineInputBorder(
+                        //       borderSide: BorderSide(
+                        //         color: kPrimaryColor,
+                        //         width: 2,
+                        //       ),
+                        //     ),
+                        //     focusedBorder: UnderlineInputBorder(
+                        //       borderSide: BorderSide(
+                        //         color: kPrimaryColor,
+                        //         width: 2,
+                        //       ),
+                        //     ),
+                        //     border: UnderlineInputBorder(
+                        //       borderSide: BorderSide(
+                        //         color: kPrimaryColor,
+                        //         width: 2,
+                        //       ),
+                        //     ),
+                        //   ),
+                        //   onChanged: (value) {
+                        //     setState(() => _mobileNumber = value);
+                        //     //_mobileNumber = value;
+                        //   },
+                        //   validator: (value) {
+                        //     if (value.isEmpty) {
+                        //       return 'Enter Mobile Number';
+                        //     }
+                        //     return null;
+                        //   },
+                        // ),
+                        // SizedBox(
+                        //   height: 15,
+                        // ),
                         TextFormField(
                           obscureText: true,
                           decoration: InputDecoration(
